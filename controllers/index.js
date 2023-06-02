@@ -1,8 +1,8 @@
-const path = require('path') // импортируем модуль path (позволяет работать с путями файловой системы)
-
 class IndexController {
     static getIndex(req, res) {
-        res.sendFile(path.resolve(__dirname + '/../views/index.html'));
+        res.render('index', { // рендерим страничку
+            title: 'index' // передаем объект для шаблонизатора
+        })
     }
 }
 

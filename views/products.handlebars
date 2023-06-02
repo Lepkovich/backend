@@ -1,0 +1,17 @@
+PRODUCTS
+<div class="menu">
+  <a href="/index">INDEX</a>
+  <a href="/about">ABOUT</a>
+  <a href="/contact">CONTACT</a>
+</div>
+
+<div class="products">
+  {{#each products}} <!--  открываем цикл-->
+
+        <div class="product">
+          <div class="title">{{{title}}}</div> <!--  берем title из json файла, который распарсивается в models/product.js-->
+            <div class="description">{{{description}}}</div>
+            <div class="price">{{{price}}}</div>
+        </div>
+    {{/each}}
+</div>

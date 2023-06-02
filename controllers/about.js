@@ -1,8 +1,8 @@
-const path = require('path') // импортируем модуль path (позволяет работать с путями файловой системы)
-
 class AboutController {
     static getAbout(req, res) {
-        res.sendFile(path.resolve(__dirname + '/../views/about.html'));
+        res.render('about', { // рендерим страничку
+            title: 'about' // передаем объект для шаблонизатора
+        })
     }
 }
 
