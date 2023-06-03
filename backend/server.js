@@ -3,7 +3,7 @@ const path = require('path') // импортируем модуль path (поз
 const eh = require('express-handlebars'); // импортируем express-handlebars
 
 
-const indexRoutes = require('./routes/index') // импортируем наши роуты
+const indexRoutes = require('./routes') // импортируем наши роуты
 const aboutRoutes = require('./routes/about')
 const contactRoutes = require('./routes/contact')
 const productRoutes = require('./routes/product')
