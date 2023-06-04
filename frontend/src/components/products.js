@@ -16,14 +16,15 @@ export class Products{
     fillProducts(products) { //будем получать наши продукты
         if(products && products.length >0) { //проверим на наличие продуктов
             products.forEach(product => { //для каждого продукта создадим такой блок:
-               /* <div className="product">
-                    <div className="title">{{{title}}}</div>
-                    <div className="description">{{{description}}}</div>
-                    <div className="price">{{{price}}}</div>
-                </div> */
-            const productElement = document.createElement('div');
+               /* <a class="product" href="/#/product?id=1">
+                    <div class="title">{{{title}}}</div>
+                    <div class="description">{{{description}}}</div>
+                    <div class="price">{{{price}}}</div>
+                </a> */
+            const productElement = document.createElement('a');
             productElement.className = 'product';
-            // сделали строчку <div className="product">
+            productElement.href = '/#/product?id=' + product.id;
+            // сделали строчку <a className="product" href="/#/product?id=1">>
 
             const titleElement = document.createElement('div');
             titleElement.className = 'title';

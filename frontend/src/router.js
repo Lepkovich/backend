@@ -1,4 +1,5 @@
 import {Products} from "./components/products.js";
+import {Product} from "./components/product.js";
 
 export class Router {
     constructor() {
@@ -33,6 +34,15 @@ export class Router {
                     new Products(); // класс Products создали в products.js
                 }
             },
+            {
+                route: '#/product',
+                title: 'Продукт',
+                view: 'views/product.html',
+                load: () => {
+                    //здесь мы запустим скрипты из бэкенда
+                    new Product(); // класс Product создали в product.js
+                }
+            }
         ];
     }
 
