@@ -1,6 +1,35 @@
 body {
     background-color: #bce8ab;
 }
+.container {
+    display: grid;
+    grid-template-columns: 200px auto;
+}
+.menu {
+    display: flex;
+    flex-direction: column;
+}
+.todo-menu {
+    display: flex;
+    flex-direction: column;
+    max-width: 200px;
+}
+.form-input {
+    margin: 5px;
+    padding: 10px;
+}
+.todo-menu button {
+    padding: 10px;
+    margin: 5px;
+}
+.about {
+    margin-top: 20px;
+    padding: 20px;
+    max-width: 200px;
+    border: 1px solid red;
+    border-radius: 5px;
+    text-align: center;
+}
 .products {
     max-width: 1200px;
     margin: 0 auto;
@@ -28,4 +57,17 @@ body {
 }
 .product .price  {
      font-size: 30px;
+}
+
+@keyframes fadeOut {
+    from {
+        opacity: 1;
+    }
+    to {
+        opacity: 0;
+    }
+}
+
+.fade-out {
+    animation: fadeOut 0.5s ease forwards;
 }

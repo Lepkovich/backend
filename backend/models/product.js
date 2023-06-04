@@ -2,7 +2,7 @@ const fs = require('fs'); //подключим модуль file system
 const path = require('path'); //подключим модуль path
 
 class ProductModel {
-    static path = path.join( __dirname, '../db', 'products.json'); //вынесли пусть в переменную path
+    static path = path.join( __dirname, '../db', 'products.json'); //вынесли путь в переменную path
 
     static async findAll() {
         return new Promise((resolve, reject) => {

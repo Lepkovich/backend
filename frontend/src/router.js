@@ -1,5 +1,5 @@
-import {Products} from "./components/products.js";
-import {Product} from "./components/product.js";
+import {Cards} from "./components/cards.js";
+import {Card} from "./components/card.js";
 
 export class Router {
     constructor() {
@@ -31,7 +31,7 @@ export class Router {
                 view: 'views/products.html',
                 load: () => {
                     //здесь мы запустим скрипты из бэкенда
-                    new Products(); // класс Products создали в products.js
+                    new Cards(); // класс Cards создали в cards.js
                 }
             },
             {
@@ -40,7 +40,7 @@ export class Router {
                 view: 'views/product.html',
                 load: () => {
                     //здесь мы запустим скрипты из бэкенда
-                    new Product(); // класс Product создали в product.js
+                    new Card(); // класс CardCard создали в cardcard.js
                 }
             }
         ];
