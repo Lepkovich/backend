@@ -7,7 +7,7 @@ export class Products{
     }
 
     async getProducts() {//получение продуктов вынесем в отдельную функцию
-        const response = await fetch('/api/products');//запросим продукты
+        const response = await fetch('http://localhost:3000/api/products');//запросим продукты
       //  const products = await response.json(); //распарсим то, что получили
       //  return products; //и вернем из функции продукты
         return await response.json();//оптимизировали наш код

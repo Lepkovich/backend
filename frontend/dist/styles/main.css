@@ -1,0 +1,30 @@
+body {
+    background-color: #bce8ab;
+}
+.products {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+.product {
+    background-color: #83e15e;
+    width: 200px;
+    border: 1px  solid #83e15e;
+    box-shadow: 10px 5px 5px grey;
+    border-radius: 10px;
+    padding: 20px;
+    margin: 20px;
+}
+.product .title {
+     font-size: 26px;
+    margin-bottom: 10px ;
+}
+.product .description  {
+     font-size: 20px;
+    margin-bottom: 10px ;
+}
+.product .price  {
+     font-size: 30px;
+}
