@@ -2,7 +2,10 @@ import {UrlManager} from "../../utils/url-manager.js";
 
 export class Card {
     constructor() {
-        this.productElement = document.getElementById('product');
+        this.cardElement = document.getElementById('card');
+        this.cardTitle = document.getElementById('title');
+        this.cardDescription = document.getElementById('description');
+
 
         this.id = UrlManager.getQueryParams()['id']; //с помощью функции найдем id из урла
         this.getCard(this.id) //вызываем получение карточки
@@ -50,7 +53,7 @@ export class Card {
         });
         if (response.ok) {
             const newCard = await response.json();
-            this.clearFields();
+            // this.clearFields();
             this.clearCard(newCard);
         } else {
             console.error('Ошибка изменения карточки');
@@ -62,7 +65,7 @@ export class Card {
             method: 'DELETE'
         });
         if (response.ok) { // удаление успешно выполнено
-            const cardElement = document.getElementById('product'); // найдем нашу карточку по id
+            const cardElement = document.getElementById('card'); // найдем нашу карточку по id
             cardElement.classList.add('fade-out'); // Добавим класс с анимацией для исчезновения
             await new Promise(resolve => setTimeout(resolve, 500)); // Подождем окончания анимации
             cardElement.remove(); //удалим из DOM нашу карточку
@@ -81,8 +84,8 @@ export class Card {
     }
 
     clearCard(card) {
-        this.productElement.querySelector('.title').innerText = card.title; //поменяем у карточки title
-        this.productElement.querySelector('.description').innerText = card.description; //поменяем у карточки description
+        this.cardElement.querySelector('.title').innerText = card.title; //поменяем у карточки title
+        this.cardElement.querySelector('.description').innerText = card.description; //поменяем у карточки description
     }
 
     fillCard(card) { //будем заполнять нашу карточку
@@ -102,9 +105,19 @@ export class Card {
             descriptionElement.innerText = card.description;
             //<div className="description">{{{description}}}</div>
 
+            const hrElement = document.createElement('hr');
+            //<hr>
+
             //и наши две строчки вставляем в первый div
-            this.productElement.appendChild(titleElement);
-            this.productElement.appendChild(descriptionElement);
+            this.cardElement.appendChild(titleElement);
+            this.cardElement.appendChild(hrElement);
+            this.cardElement.appendChild(descriptionElement);
+
+
+            // и подставим поля в input и textarea из карточки
+            this.cardTitle.value = card.title;
+            this.cardDescription.innerText = card.description;
+
         }
     }
 
