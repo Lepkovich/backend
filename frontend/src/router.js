@@ -7,8 +7,9 @@ export class Router {
             {
                 route: '#/',
                 title: 'Главная',
-                view: 'views/index.html',
+                view: 'views/cards.html',
                 load: () => {
+                    new Cards();
                 }
             },
             {
@@ -27,17 +28,17 @@ export class Router {
             },
             {
                 route: '#/products',
-                title: 'Продукты',
-                view: 'views/products.html',
+                title: 'Карточки',
+                view: 'views/cards.html',
                 load: () => {
                     //здесь мы запустим скрипты из бэкенда
                     new Cards(); // класс Cards создали в cards.js
                 }
             },
             {
-                route: '#/product',
-                title: 'Продукт',
-                view: 'views/product.html',
+                route: '#/card',
+                title: 'Карточка',
+                view: 'views/card.html',
                 load: () => {
                     //здесь мы запустим скрипты из бэкенда
                     new Card(); // класс CardCard создали в cardcard.js

@@ -1,9 +1,10 @@
 const express = require('express'); // импортируем модуль express
-const productRoutes = require('./product');
+const cardRoutes = require('./card');
 
 
 const router = express.Router({mergeParams: true});
 
-router.use('/products', productRoutes);
+// router.use('/products', productRoutes);
+router.use('/cards', cardRoutes);
 
 module.exports = router;

@@ -41,7 +41,7 @@ export class Card {
             cardData[item.name] = item.element.value;
             console.log(cardData[item.name]);
         });
-        const response = await fetch('http://localhost:3000/api/products/' + id, {
+        const response = await fetch('http://localhost:3000/api/cards/' + id, {
             method: 'PUT',
             headers: {
                 'Content-Type': 'application/json'
@@ -58,7 +58,7 @@ export class Card {
     }
 
     async deleteCard(id) {
-        const response = await fetch('http://localhost:3000/api/products/' + id, {
+        const response = await fetch('http://localhost:3000/api/cards/' + id, {
             method: 'DELETE'
         });
         if (response.ok) { // удаление успешно выполнено
@@ -66,7 +66,7 @@ export class Card {
             cardElement.classList.add('fade-out'); // Добавим класс с анимацией для исчезновения
             await new Promise(resolve => setTimeout(resolve, 500)); // Подождем окончания анимации
             cardElement.remove(); //удалим из DOM нашу карточку
-            window.location.href = '/#/products'
+            window.location.href = '/#/cards'
 
         } else {
             console.error('Ошибка удаления карточки');
@@ -74,7 +74,7 @@ export class Card {
     }
 
     async getCard(id) {//получение продукта
-        const response = await fetch('http://localhost:3000/api/products/' + id );//запросим продукт по id
+        const response = await fetch('http://localhost:3000/api/cards/' + id );//запросим продукт по id
       //  const products = await response.json(); //распарсим то, что получили
       //  return products; //и вернем из функции продукты
         return await response.json();//оптимизировали наш код

@@ -1,8 +1,8 @@
 const fs = require('fs'); //подключим модуль file system
 const path = require('path'); //подключим модуль path
 
-class ProductModel {
-    static path = path.join( __dirname, '../db', 'products.json'); //вынесли путь в переменную path
+class CardModel {
+    static path = path.join( __dirname, '../db', 'cards.json'); //вынесли путь в переменную path
 
     static async findAll() {
         return new Promise((resolve, reject) => {
@@ -11,7 +11,7 @@ class ProductModel {
                 if (error) {
                     reject(error); //обработаем ошибку
                 } else {
-                    resolve(JSON.parse(data)); //распарсим данные файла products.json
+                    resolve(JSON.parse(data)); //распарсим данные файла cards.json
                 }
             })
         });
@@ -24,13 +24,13 @@ class ProductModel {
                     reject(error); //обработаем ошибку
                 } else {
                     try {
-                        const products = JSON.parse(data); //распарсим данные файла products.json в products
-                        const product = products.find(item => parseInt(item.id) === parseInt(id));
+                        const cards = JSON.parse(data); //распарсим данные файла cards.json в products
+                        const card = cards.find(item => parseInt(item.id) === parseInt(id));
                         //по id передадим продукт в product, предварительно приведя их к целым числам
-                        if(product) {
-                            resolve(product);
+                        if(card) {
+                            resolve(card);
                         } else {
-                            reject("Продукт не найден"); //обработаем ошибку
+                            reject("Карточка не найдена"); //обработаем ошибку
                         }
                     } catch (e) {
                         reject('невозможно обработать данные'); //обработаем ошибку
@@ -39,7 +39,7 @@ class ProductModel {
             })
         });
     }
-    static async create(newProduct) {
+    static async create(newCard) {
         return new Promise((resolve, reject) => {
             fs.readFile(this.path, //прочитаем файл по сформированному пути
                 'utf-8', (error, data) => { //вызовем колбэк
@@ -47,14 +47,14 @@ class ProductModel {
                     reject(error); //обработаем ошибку
                 } else {
                     try {
-                        const products = JSON.parse(data); //распарсим данные файла products.json в products
-                        products.push(newProduct);//добавим новый продукт
-                        const newJSON = JSON.stringify(products); //упаковываем products обратно в json
+                        const cards = JSON.parse(data); //распарсим данные файла cards.json в products
+                        cards.push(newCard);//добавим новый продукт
+                        const newJSON = JSON.stringify(cards); //упаковываем cards обратно в json
                         fs.writeFile(this.path, newJSON, 'utf-8', (error, data) => {
                             if (error) {
                                 reject(error); //обработаем ошибку
                             } else {
-                                resolve(newProduct);
+                                resolve(newCard);
                             }
                         })
                     } catch (e) {
@@ -64,7 +64,7 @@ class ProductModel {
             })
         });
     }
-    static async change(id, newProduct) {
+    static async change(id, newCard) {
         return new Promise((resolve, reject) => {
             fs.readFile(this.path, //прочитаем файл по сформированному пути
                 'utf-8', (error, data) => { //вызовем колбэк
@@ -72,22 +72,22 @@ class ProductModel {
                     reject(error); //обработаем ошибку
                 } else {
                     try {
-                        const products = JSON.parse(data); //распарсим данные файла products.json в products
-                        const productIndex = products.findIndex(item => parseInt(item.id) === parseInt(id));
+                        const cards = JSON.parse(data); //распарсим данные файла cards.json в products
+                        const productIndex = cards.findIndex(item => parseInt(item.id) === parseInt(id));
                         //по id передадим индекс в productIndex, предварительно приведя их к целым числам
                         if (productIndex > -1) { //первый правильный индекс - это 0
-                            products[productIndex] = newProduct;
-                            const newJSON = JSON.stringify(products); //упаковываем products обратно в json
+                            cards[productIndex] = newCard;
+                            const newJSON = JSON.stringify(cards); //упаковываем cards обратно в json
                             fs.writeFile(this.path, newJSON, 'utf-8', (error, data) => {
                             //перезапишем наш json файл
                                 if (error) {
                                     reject(error); //обработаем ошибку
                                 } else {
-                                    resolve(newProduct);
+                                    resolve(newCard);
                                 }
                             })
                         } else {
-                            reject("Продукт не найден"); //обработаем ошибку
+                            reject("Карточка не найдена"); //обработаем ошибку
                         }
                     } catch (e) {
                         reject('невозможно обработать данные'); //обработаем ошибку
@@ -104,12 +104,12 @@ class ProductModel {
                     reject(error); //обработаем ошибку
                 } else {
                     try {
-                        const products = JSON.parse(data); //распарсим данные файла products.json в products
-                        const productIndex = products.findIndex(item => parseInt(item.id) === parseInt(id));
-                        //по id передадим индекс в productIndex, предварительно приведя их к целым числам
-                        if (productIndex > -1) { //первый правильный индекс - это 0
-                            products.splice(productIndex, 1);//метод удаления 1 продукта из массива
-                            const newJSON = JSON.stringify(products); //упаковываем products обратно в json
+                        const cards = JSON.parse(data); //распарсим данные файла cards.json в cards
+                        const cardIndex = cards.findIndex(item => parseInt(item.id) === parseInt(id));
+                        //по id передадим индекс в cardIndex, предварительно приведя их к целым числам
+                        if (cardIndex > -1) { //первый правильный индекс - это 0
+                            cards.splice(cardIndex, 1);//метод удаления 1 продукта из массива
+                            const newJSON = JSON.stringify(cards); //упаковываем cards обратно в json
                             fs.writeFile(this.path, newJSON, 'utf-8', (error, data) => {
                             //перезапишем наш json файл
                                 if (error) {
@@ -119,7 +119,7 @@ class ProductModel {
                                 }
                             })
                         } else {
-                            reject("Продукт не найден"); //обработаем ошибку
+                            reject("Карточка не найдена"); //обработаем ошибку
                         }
                     } catch (e) {
                         reject('невозможно обработать данные'); //обработаем ошибку
@@ -130,4 +130,4 @@ class ProductModel {
     }
 }
 
-module.exports = ProductModel; //экспортируем нашу функцию
+module.exports = CardModel; //экспортируем нашу функцию

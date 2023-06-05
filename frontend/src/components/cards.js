@@ -39,7 +39,7 @@ export class Cards{
             cardData[item.name] = item.element.value;
             console.log(cardData[item.name]);
         });
-        const response = await fetch('http://localhost:3000/api/products', {
+        const response = await fetch('http://localhost:3000/api/cards', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
@@ -70,7 +70,7 @@ export class Cards{
 
 
     async getCards() {//получение продуктов вынесем в отдельную функцию
-        const response = await fetch('http://localhost:3000/api/products');//запросим продукты
+        const response = await fetch('http://localhost:3000/api/cards');//запросим карточки
         //  const products = await response.json(); //распарсим то, что получили
         //  return products; //и вернем из функции продукты
         return await response.json();//оптимизировали наш код
@@ -94,13 +94,13 @@ export class Cards{
     }
 
     createCardElement(card) { //для каждого продукта создадим такой блок:
-        /* <a class="product" href="/#/product?id=1">
+        /* <a class="product" href="/#/card?id=1">
                      <div class="title">{{{title}}}</div>
                      <div class="description">{{{description}}}</div>
                  </a> */
         const cardElement = document.createElement('a');
         cardElement.className = 'product';
-        cardElement.href = '/#/product?id=' + card.id;
+        cardElement.href = '/#/card?id=' + card.id;
         // сделали строчку <a className="product" href="/#/product?id=1">>
 
         const titleElement = document.createElement('div');
