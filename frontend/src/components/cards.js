@@ -108,6 +108,9 @@ export class Cards{
         titleElement.innerText = card.title;
         //<div className="title">{{{title}}}</div>
 
+        const hrElement = document.createElement('hr');
+        //<hr>
+
         const descriptionElement = document.createElement('div');
         descriptionElement.className = 'description';
         descriptionElement.innerText = card.description;
@@ -116,6 +119,7 @@ export class Cards{
 
         //и наши две строчки вставляем в первый div
         cardElement.appendChild(titleElement);
+        cardElement.appendChild(hrElement);
         cardElement.appendChild(descriptionElement);
 
         return cardElement;

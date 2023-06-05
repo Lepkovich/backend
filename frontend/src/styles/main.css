@@ -14,10 +14,12 @@ body {
     flex-direction: column;
     max-width: 200px;
 }
-.form-input {
+.form-input, .info {
     margin: 5px;
     padding: 10px;
+    resize: none;
 }
+
 .todo-menu button {
     padding: 10px;
     margin: 5px;
